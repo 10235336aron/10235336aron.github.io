@@ -9,7 +9,7 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(255, 0, 0);
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
@@ -17,11 +17,15 @@
 			position: absolute;
 			top: 100px;
 			/* Change me! */
-			left: 0px;
+			left: 120px;
 		}
 
 		.board {
 			height: 100vh;
+			background-color: rgb(49, 47, 45);
+			 {
+
+}
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -46,7 +50,7 @@
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 
 			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 50);
+			var interval = setInterval(update, 50);
 
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
@@ -66,18 +70,36 @@
 			//////////////////////////////////////////////////////////////////
 
 			// TODO 2 - Variable declarations 
-
-
-
+			var posistionX  = 0;
+			moveBoxTo(posistionX)
+			var points = 0
+			var speed = 10
+			var posistionY
+			var speedY
+			var boardHeight = jQuery(window).height();
+			var randNum = Math.random() * 100;
+			var colorStr = "rgb(50, 25, 250)";
+box.css("background-color", colorStr);
+var randomNumberBetween0and10 = Math.random() * 10;
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
 			function update() {
-
-
-			};
+				posistionX = posistionX + speed;
+				console.log(posistionX)
+			moveBoxTo(posistionX);
+			if(posistionX > boardWidth)
+			speed = speed* -1
+			if(posistionX <= 0)
+			speed = + 10
+			function moveBoxTo(newPositionX, newPositionY) {
+    box.css("left", newPositionX);
+    box.css("top", newPositionY);
+	moveBoxTo(positionX, positionY);
+  }
+		    }
 
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -85,8 +107,13 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-
-
+			 posistionX = 0;
+			changeBoxText(points);
+			points = points + 1
+			   speed = speed + 3
+			   function endGame() {
+  clearInterval(interval);
+}
 			};
 
 
